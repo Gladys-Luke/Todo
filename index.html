@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Task Master</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>     
 <body class="px-5 bg-gray-100 mx-24">
     <header class="py-3 py-4 text-2xl font-bold bg-grey-300 text-center">
@@ -13,23 +13,34 @@
     </header>
 
     <main class="px-5 mt-10 text-center">
-       <form action="">
-        <input type="text" placeholder="what are we diong today" class="py-2 px-3 border border-slate-100 h-12 mx-3" id="todo-input">
-        <button class="bg-blue-500 rounded-lg px-2 py-2 text-lg" onclick="createTodo()" type="button" id="add_todo_btn">
-            Add todo
-        </button>
-        <button class="hidden bg-green-500 rounded-lg px-2 py-2 text-lg" onclick="updateTodo()" type="button" id="update_todo_btn">
-            Update
-        </button>
-       </form>
-       <span class="hidden" id="form-message"></span>
-    </main >
+        <form action="">
+            <input type="text" placeholder="What are we doing today" class="py-2 px-3 border border-slate-100 h-12 mx-3" id="todo-input">
+            <input type="text" placeholder="Description" class="py-2 px-3 border border-slate-100 h-12 mx-3" id="todo-description-input"> <!-- New description input -->
+            <button class="bg-blue-500 rounded-lg px-2 py-2 text-lg" onclick="createTodo()" type="button" id="add_todo_btn">
+                Add todo
+            </button>
+            <button class="hidden bg-green-500 rounded-lg px-2 py-2 text-lg" onclick="updateTodo()" type="button" id="update_todo_btn">
+                Update
+            </button>
+        </form>
+        <span class="hidden" id="form-message"></span>
+    </main>
 
-    <section class="" id="todo-list-container">
-         
+    <section id="todo-list-container">
+       
     </section>
+
+    <section class="hidden" id="todo-preview">
+        <h2 id="todo-title"></h2>
+        <p id="todo-description"></p>
+        <p id="todo-created-time"></p>
+    </section>
+
+    <div id="back-button" class="hidden">
+        <button onclick="navigateToMainPage()" class="bg-green-300 rounded px-6 py-2 mt-10 font-bold">Back</button>
+      </div>
     
     <script src="/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
