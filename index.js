@@ -161,14 +161,18 @@ const updateTodo = () => {
     }, 5000);
 
     return;
-}
+  }
 
   const updateBtn = document.querySelector("#update_todo_btn");
   const todoId = updateBtn.getAttribute("todo_id_to_update");
   const todo_db = JSON.parse(localStorage.getItem(DB_NAME)) || [];
   const updated_todo_db = todo_db.map((todo) => {
     if (todo.id === todoId) {
-      return { ...todo, title: todoInput.value };
+      return {
+        ...todo,
+        title: todoInput.value,
+        description: descriptionInput.value, // Update the description as well
+      };
     } else {
       return todo;
     }
@@ -176,7 +180,18 @@ const updateTodo = () => {
 
   localStorage.setItem(DB_NAME, JSON.stringify(updated_todo_db));
   fetchTodos();
+
+  // Clear input fields
+  todoInput.value = "";
+  descriptionInput.value = "";
+
+  // Change button back to "Add todo"
+  updateBtn.classList.add("hidden");
+  const addBtn = document.querySelector("#add_todo_btn");
+  addBtn.classList.remove("hidden");
 };
+
+
 
 const deleteTodo = (id) => {
   Swal.fire({
